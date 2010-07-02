@@ -1,8 +1,4 @@
 class Helper
-  def self.foo
-    "foo"
-  end
-
   def image_size(profile, non_rep_size)
     if profile.user.rep?
       '190x114'
