@@ -3,30 +3,6 @@ require 'action_controller'
 class Helper
   include ActionView::Helpers
 
-  def image_size(profile, non_rep_size)
-    if profile.user.rep?
-      '190x114'
-    else
-      non_rep_size
-    end
-  end
-
-  def display_small_photo(profile, html = {}, options = {})
-    display_photo(profile, image_size(profile, "32x32"), html, options)
-  end
-
-  def display_medium_photo(profile, html = {}, options = {})
-    display_photo(profile, image_size(profile, "48x48"), html, options)
-  end
-
-  def display_large_photo(profile, html = {}, options = {}, link = true)
-    display_photo(profile, image_size(profile, "64x64"), html, options, link)
-  end
-
-  def display_huge_photo(profile, html = {}, options = {}, link = true)
-    display_photo(profile, image_size(profile, "200x200"), html, options, link)
-  end
-
   def display_photo(profile, size, html = {}, options = {}, link = true)
     return "wrench.png" unless profile  # this should not happen
 
@@ -45,5 +21,19 @@ class Helper
 
     result = image_tag(image, html) 
     return link ? link_to(result, profile_path(profile)) : result
+  end
+
+  self.class_eval do
+    {
+      :small => '32x32',
+      :medium => '48x48',
+      :large => '64x64',
+      :huge => '200x200'
+    }.each_pair do |name, size|
+      define_method "display_#{name}_photo" do |profile, options, link|
+        size = '190x114' if profile.user && profile.user.rep?
+        display_photo(profile, size, {}, options, link)
+      end
+    end
   end
 end

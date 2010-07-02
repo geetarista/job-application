@@ -47,7 +47,7 @@ describe Helper do
           "<img alt=\"Url_for_file_column\" class=\"thumbnail\" height=\"100\" src=\"/images/url_for_file_column\" title=\"Link to Clayton\" width=\"100\" />"
       end
     end
-    
+
     context "Without a user, but requesting a link" do
       before(:each) do
         @profile = Factory.build(:user_profile)
@@ -59,7 +59,7 @@ describe Helper do
           "<a href=\"profile_path\"><img alt=\"User100x100\" src=\"/images/user100x100.jpg\" /></a>"
       end
     end
-    
+
     context "When the user doesn't have a photo" do
       before(:each) do
         @profile = Factory.build(:user_profile)
@@ -78,7 +78,7 @@ describe Helper do
             "<a href=\"profile_path\"><img alt=\"User190x114\" src=\"/images/user190x114.jpg\" /></a>"
         end
       end
-      
+
       context "With a regular user" do
         before(:each) do
           @profile.user.stub!(:rep?).and_return(false)
@@ -91,7 +91,7 @@ describe Helper do
         end
       end
     end
-    
+
     context "When the user doesn't have a photo and we don't want to display the default" do
       before(:each) do
         @profile = Factory.build(:user_profile)
@@ -107,9 +107,9 @@ describe Helper do
         it "return a default link" do
           helper.display_photo(@profile, "100x100", {}, {:show_default => false}, true).should == "NO DEFAULT"
         end
-        
+
       end
-      
+
       context "With a regular user" do
         before(:each) do
           @profile.user.stub!(:rep?).and_return(false)
@@ -120,6 +120,21 @@ describe Helper do
           helper.display_photo(@profile, "100x100", {}, {}, true).should ==
             "<a href=\"profile_path\"><img alt=\"User100x100\" src=\"/images/user100x100.jpg\" /></a>"
         end
+      end
+    end
+
+    context "When using size-named method" do
+      before(:each) do
+        @profile = Factory.build(:user_profile)
+        @profile.user = Factory.build(:user)
+        @profile.stub!(:has_valid_photo?).and_return(false)
+        @profile.user.stub!(:rep?).and_return(false)
+        helper.stub!(:profile_path).with(@profile).and_return("profile_path")
+      end
+
+      it "should be backwards-compatible" do
+        helper.display_small_photo(@profile, {}, {}).should ==
+          "<a href=\"profile_path\"><img alt=\"User32x32\" src=\"/images/user32x32.jpg\" /></a>"
       end
     end
   end
