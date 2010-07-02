@@ -33,20 +33,16 @@ class Helper
     show_default_image = !(options[:show_default] == false)
     html.reverse_merge!(:class => 'thumbnail', :size => size, :title => "Link to #{profile.name}")
 
-    if profile
-      if profile.has_valid_photo?
-        @user = profile.user
-        if link
-          return link_to(image_tag(url_for_file_column("user", "photo", size), html), profile_path(profile) )
-        else
-          return image_tag(url_for_file_column("user", "photo", size), html)
-        end
+    if profile.has_valid_photo?
+      # @user = profile.user
+      if link
+        return link_to(image_tag(url_for_file_column("user", "photo", size), html), profile_path(profile) )
       else
-        show_default_image ? default_photo(profile, size, {}, link) : ''
+        return image_tag(url_for_file_column("user", "photo", size), html)
       end
+    else
+      return show_default_image ? default_photo(profile, size, {}, link) : 'NO DEFAULT'
     end
-
-    show_default_image ? default_photo(profile, size, {}, link) : 'NO DEFAULT'
   end
 
   def default_photo(profile, size, html={}, link = true)
