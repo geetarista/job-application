@@ -1,0 +1,7 @@
+source :rubygems
+
+gem 'rspec', :require => 'spec'
+gem 'factory_girl'
+gem 'redgreen'
+gem 'activesupport'
+gem 'actionpack'

@@ -1,13 +1,11 @@
-require 'rubygems'
 require 'factory_girl'
 require 'factories'
-require 'spec'
-require 'spec/autorun'
-require 'redgreen'
 require 'user_profile'
 require 'helper'
 require 'user'
 require 'photo'
+require 'active_support'
+require 'action_view'
 
 describe "Helper" do
   before(:each) do
