@@ -42,7 +42,7 @@ class Helper
       end
     end
 
-    show_default_image ? default_photo(profile, size, {}, link) : ''
+    show_default_image ? default_photo(profile, size, {}, link) : 'NO DEFAULT'
   end
 
   def default_photo(profile, size, html={}, link = true)
