@@ -24,7 +24,7 @@ class Helper
   end
 
   def display_photo(profile, size, html = {}, options = {}, link = true)
-    return image_tag("wrench.png") unless profile  # this should not happen
+    return "wrench.png" unless profile  # this should not happen
 
     show_default_image = !(options[:show_default] == false)
     html.reverse_merge!(:class => 'thumbnail', :size => size, :title => "Link to #{profile.name}")
