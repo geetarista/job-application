@@ -75,7 +75,7 @@ describe Helper do
 
         it "return a default link" do
           helper.display_photo(@profile, "100x100", {}, {}, true).should ==
-            "<a href=\"profile_path\"><img alt=\"User190x119\" src=\"/images/user190x119.jpg\" /></a>"
+            "<a href=\"profile_path\"><img alt=\"User190x114\" src=\"/images/user190x114.jpg\" /></a>"
         end
       end
       
