@@ -1,4 +1,8 @@
+require 'action_controller'
+
 class Helper
+  include ActionView::Helpers
+
   def image_size(profile, non_rep_size)
     if profile.user.rep?
       '190x114'
