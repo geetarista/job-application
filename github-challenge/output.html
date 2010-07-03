@@ -1,0 +1,54 @@
+<html><head><title>Recent Github Commits from 'rails/rails/master'</head><body><h1>James MacAulay</h1><ul><li>Commit: 16cef77d37ffe3e2cdc6f7db76b4ae59ce4cbc5b<br/>Fix AS::MB::Chars#+ to not alter self [#4646 state:resolved]
+
+Signed-off-by: José Valim <jose.valim@gmail.com></li></ul><h1>Aaron Patterson</h1><ul><li>Commit: f8720a04d129668c7554c1a7270fba5418510b47<br/>porting session.clear fix to master branch. [#5030 state:resolved]
+
+Signed-off-by: Jeremy Kemper <jeremy@bitsweat.net></li><li>Commit: 3f563f169612ec340816f0a549fe9db7ff95c238<br/>AssociationCollection#create_by_*, find_or_create_by_* work properly now. [#1108 state:resolved]
+
+Signed-off-by: Jeremy Kemper <jeremy@bitsweat.net></li></ul><h1>Norman Clarke</h1><ul><li>Commit: 4dbb6e3ff001bed14c64af3ddef87b3359a43505<br/>Update Unicode database to 5.2.0. [#5011 state:resolved]
+
+Signed-off-by: José Valim <jose.valim@gmail.com></li></ul><h1>Wincent Colaiuta</h1><ul><li>Commit: 52c56f9f7ec46ee39f1a6319ff4017e2492683ed<br/>docs: note that mail() accepts arbitrary headers
+
+The documentation makes it sound like mail() only accepts a limited
+set of headers in the headers hash, but it in fact accepts any
+arbitrary headers, and there is a test ("can pass random headers in
+as a hash to mail") for it in the test suite.
+
+Signed-off-by: Wincent Colaiuta <win@wincent.com></li></ul><h1>Jeremy Kemper</h1><ul><li>Commit: aeaa4687ea5802089a99e0fd96b10ed5c463cd21<br/>Fix indent</li><li>Commit: d7c1057652cfc971bb35ef09b0b1560fcd28ed70<br/>Bump bundler dependency to 1.0.0.beta.2 or later</li><li>Commit: b07e6fdaa0aa07016d1425ada5b7f966142d0212<br/>Support any mysql-like adapter</li></ul><h1>Geoff Buesing</h1><ul><li>Commit: 227e1caea51279fe4687f17e5704d637a21ea15f<br/>Time#as_json: use Time#formatted_offset instead of strftime %z directive, which is non-standard and inaccurate on some platforms (e.g., Mac OS X).
+
+[#4979]
+
+Signed-off-by: Jeremy Kemper <jeremy@bitsweat.net></li></ul><h1>Gonçalo Silva</h1><ul><li>Commit: 68bd46ffb99282ecb589c9ed2cd0c74d0da3396e<br/>performance tests now working accurately on 1.9, using Ruby with the GCdata patch</li></ul><h1>Xavier Noria</h1><ul><li>Commit: c63cf7bf0db708fe46a929cf57649ab5a92034af<br/>Merge remote branch 'rails/master'</li><li>Commit: ec3bfa2ead7337fe99ff036d4b8b5ae0a321f8cd<br/>s/escape_once/html_escape/, since html safety is the contract that now says whether something has to be escaped</li><li>Commit: cba1460a2fe2bbe1153620582a66e03cec9ba7a5<br/>url_for no longer escapes HTML, the :escape option is also gone
+
+Rationale: url_for is just a path/URL generator, it is the responsability of the caller to escape conveniently HTML needs it, JavaScript needs different escaping, a text mail needs no escaping at all, etc.</li></ul><h1>José Valim</h1><ul><li>Commit: 9e6e64873243ee707ecad3d523ceb0dbae0617cd<br/>Fix routes with :controller segment when namespaced [#5034 state:resolved]</li><li>Commit: 0189fb76e3c38ef9a0d292135683b0d135c4a369<br/>reload_routes! was still referencing old Rails::Application.</li><li>Commit: 53b34e84762b7f2d6b641f99dadbb1eab42907ab<br/>Avoid calls to Rails::Application since this is not the official API.
+
+Your application should *always* reference your application const (as Blog::Application) and Rails.application should be used just internally.</li><li>Commit: e596a8e14cfb1f2ca19cd20ae7e40047d4819b3e<br/>Add the possibility to have several behaviors in AS::Deprecation.</li><li>Commit: 57d750edf7c71e001ac314fa188aa1fc6292f8ab<br/>Make relation a private method.</li><li>Commit: 9ab8cfc21ab07b9a65388ce3643e5558642dbc2a<br/>Improve the idiom used in multibyte chars a bit.</li><li>Commit: 13a36902718d452b31d13f2f7aba5770e51844a9<br/>Add missing CHANGELOG items.</li><li>Commit: 06681af518036dcc84f4565b59a0dee460b01108<br/>A couple enhancements to the router:
+
+* Allow to use the get :symbol shortcut outside resources scopes as well;
+
+* Fix a bug where :action was not being picked from given options;
+
+* Giving :as option inside a resource now changes just the relative name instead of the full name;</li><li>Commit: ccbb3bb3d87a48c8763a8afff4c9b21a9bf2539e<br/>Clean up the logic to specify the name and path for action a bit.</li><li>Commit: 0253bf425ea6fc112d8eecc6e7ea94e349cb538d<br/>Change :notification to :notify (ht: m4n)</li></ul><h1>Andrew White</h1><ul><li>Commit: 54250a5bfe6992afaaca6357d3b414e6c49651ba<br/>Refactor recall parameter normalization [#5021 state:resolved]
+
+Signed-off-by: José Valim <jose.valim@gmail.com></li></ul><h1>bodhi</h1><ul><li>Commit: 2eaae1f50b7fc34b90b2b7c83c55478b85d1130c<br/>add note of which configuration option to set in deprecation warning message [#5012 state:resolved]
+
+Signed-off-by: José Valim <jose.valim@gmail.com></li></ul><h1>Cyril Mougel</h1><ul><li>Commit: 9024545a6b019e3a2596a4194e84e77963e31b05<br/>fix failure if behavior is not define and try use the default
+
+Signed-off-by: José Valim <jose.valim@gmail.com></li></ul><h1>Alex Muntean</h1><ul><li>Commit: 265b7c5edfe9b60d1ab547bfef569d94df05b8e9<br/>Fix ActiveSupport::Multibyte::Chars#slice for empty strings when starting offset is negative [#4717 state:resolved]
+
+Signed-off-by: José Valim <jose.valim@gmail.com></li></ul><h1>Piotr Sarnacki</h1><ul><li>Commit: f7ba614c2db31933cbc12eda87518de3eca0228c<br/>Unify routes naming by renaming router to routes
+
+Signed-off-by: José Valim <jose.valim@gmail.com></li></ul><h1>Tekin</h1><ul><li>Commit: d7c2e52c6c04dec4e4665c8f0f9988bfe913cb15<br/>migrations.rb requires active_support/core_ext/module/aliasing [#5008 state:committed]
+
+Signed-off-by: Xavier Noria <fxn@hashref.com></li></ul><h1>James Le Cuirot</h1><ul><li>Commit: f3fedd7f84c25d1d99a70af1e21e20abb48f100f<br/>Don't remove scheduled destroys when loading an association. [#4642 state:resolved]
+
+Signed-off-by: José Valim <jose.valim@gmail.com></li></ul><h1>Santiago Pastorino</h1><ul><li>Commit: 8cc746331c32a6951e5c73c8a21fd32f00680471<br/>Time#formatted_offset is defined in core_ext/time/conversions
+
+[#4979]</li><li>Commit: 2ef8a2b403adcee21fe1a5bfadc125b24779cd53<br/>bump erubis version to 2.6.6 and thor version to 0.13.7
+
+Signed-off-by: José Valim <jose.valim@gmail.com></li><li>Commit: cb321546b7aef33fcf5466b61f79bd9198cd12b5<br/>Time has it own implementation of xmlschema, now AMo doesn't depend on TZInfo
+
+[#4979 state:committed]
+
+Signed-off-by: José Valim <jose.valim@gmail.com></li><li>Commit: 4a0c514eb48b8e5d4ceffb4817661c182c2368a3<br/>AS json refactor, move to_json implementation to core_ext and a cleanup a bit the code</li><li>Commit: 7bd00fcb7f8e7f94811387cd809480a727b61f11<br/>We are trying to test that & escapes here not that &amp; is being escaped, also added a cosmetic change to test_link_tag_with_query_and_no_name
+
+Signed-off-by: Jeremy Kemper <jeremy@bitsweat.net></li></ul></body></html

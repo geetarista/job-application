@@ -1,0 +1,40 @@
+#! /usr/bin/ruby
+
+# Github repository commit script
+#
+# Usage:
+#   gem install json
+#   ruby github_commits user/repo/branch
+#
+# You can leave out 'ruby' if the script is in your $PATH
+
+require 'open-uri'
+require 'json'
+
+begin
+  response = open("http://github.com/api/v2/json/commits/list/#{ARGV[0]}")
+rescue OpenURI::HTTPError
+  puts 'Valid repository needed. Example usage: github_commits user/repo/branch'
+  exit
+end
+
+commits = JSON.parse(response.read)['commits'].group_by { |commit| commit['author'] }
+
+html = "<html><head><title>Recent Github Commits from '#{ARGV[0]}'</head><body>"
+
+commits.each do |author, author_commits|
+  html += "<h1>#{author['name']}</h1>"
+  html += '<ul>'
+  author_commits.each do |commit|
+    html += "<li>Commit: #{commit['id']}<br/>"
+    html += commit['message']
+    html += '</li>'
+  end
+  html += '</ul>'
+end
+
+html+= '</body></html'
+
+File.open('output.html','w') { |f| f.puts html; f.close }
+
+puts "Output generated to output.html."
