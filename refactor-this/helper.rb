@@ -24,13 +24,10 @@ class Helper
   end
 
   self.class_eval do
-    {
-      :small => '32x32',
-      :medium => '48x48',
-      :large => '64x64',
-      :huge => '200x200'
-    }.each_pair do |name, size|
-      define_method "display_#{name}_photo" do |profile, options, link|
+    { :small => '32x32', :medium => '48x48', :large => '64x64', :huge => '200x200' }.each_pair do |name, size|
+      method_name = "display_#{name}_photo"
+      define_method method_name do |profile, options, link|
+        warn "DEPRECATION: #{method_name} is no longer supported. Please use display_photo instead."
         size = '190x114' if profile.user && profile.user.rep?
         display_photo(profile, size, {}, options, link)
       end
