@@ -4,7 +4,7 @@ class Helper
   include ActionView::Helpers
 
   def display_photo(profile, size, html = {}, options = {}, link = true)
-    return "wrench.png" unless profile  # this should not happen
+    return "wrench.png" unless profile
 
     show_default_image = !(options[:show_default] == false)
     html.reverse_merge!(:class => 'thumbnail', :size => size, :title => "Link to #{profile.name}")
